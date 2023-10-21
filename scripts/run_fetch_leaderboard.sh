@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 
 set -a
 source /root/projects/wow-arena-leaderboard/.env
