@@ -1,0 +1,4 @@
+.env
+db_data/
+pgadmin_data/
+grafana_data/

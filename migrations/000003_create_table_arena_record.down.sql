@@ -1,0 +1,5 @@
+DROP TABLE IF EXISTS arena_records;
+DROP TABLE IF EXISTS leaderboards;
+DROP TABLE IF EXISTS seasons;
+DROP TABLE IF EXISTS characters;
+DROP TABLE IF EXISTS servers;
