@@ -35,6 +35,6 @@ CREATE TABLE IF NOT EXISTS arena_records (
   rating INT NOT NULL,
   won INT NOT NULL,
   lost INT NOT NULL,
-  CONSTRAINT arena_record_leaderboard_id_fk FOREIGN KEY (leaderboard_id) REFERENCES leaderboards(id),
+  CONSTRAINT arena_record_leaderboard_id_fk FOREIGN KEY (leaderboard_id) REFERENCES leaderboards(id) ON DELETE CASCADE,
   CONSTRAINT arena_record_character_id_fk FOREIGN KEY (character_id) REFERENCES characters(id)
 );
