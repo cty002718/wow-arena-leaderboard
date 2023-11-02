@@ -7,6 +7,7 @@ import (
 
 type ILeaderboardDao interface {
 	Create(*orm.Leaderboard) error
+	GetLatest(seasonId int, bracket string) (*orm.Leaderboard, error)
 }
 
 type LeaderboardDao struct {
@@ -21,4 +22,17 @@ func NewLeaderboardDao(db *gorm.DB) ILeaderboardDao {
 
 func (dao *LeaderboardDao) Create(leaderboard *orm.Leaderboard) error {
 	return dao.DB.Create(leaderboard).Error
+}
+
+func (dao *LeaderboardDao) GetLatest(seasonId int, bracket string) (*orm.Leaderboard, error) {
+	var leaderboard orm.Leaderboard
+	err := dao.DB.Where("season_id = ? AND bracket = ?", seasonId, bracket).
+		Order("created_at DESC").
+		First(&leaderboard).Error
+
+	if err != nil {
+		return nil, err
+	}
+
+	return &leaderboard, nil
 }
